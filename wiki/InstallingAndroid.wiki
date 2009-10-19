@@ -14,7 +14,7 @@ http://developer.android.com/sdk/1.6_r1/installing.html
 Download JDK 6 Update from here:
 http://java.sun.com/javase/downloads/index.jsp
 
-There are a few versions of JDK 6 available. Download anyone.
+There are a few versions of JDK 6 available. Download anyone. I downloaded JDK 6 Update 16.
 
 After downloading, follow installation instructions. 
 
@@ -57,5 +57,3 @@ Select Window > Preferences... to open the Preferences panel
 Select Android from the left panel
 For the SDK Location in the main panel, click Browse... and locate your downloaded SDK directory. 
 Click Apply, then OK.
-
-
