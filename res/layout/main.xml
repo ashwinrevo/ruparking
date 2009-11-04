@@ -1,12 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-<TextView  
+    android:background="#ff000000"
+>
+    <TextView  
+	android:id="@+id/dummy0"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="@string/hello"
+    android:height="0.1in"
+     />
+<TextView  
+	android:id="@+id/rup"
+    android:layout_width="1.8in" 
+    android:layout_height="wrap_content" 
+    android:text="R U Parking"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:textSize="0.25in"
+    android:textColor="#fffff100"
+    android:typeface="serif"
+    android:textStyle="bold"
+    android:background="#ffe32b21"
+    android:layout_below="@id/dummy0"
     />
-</LinearLayout>
+<TextView  
+	android:id="@+id/dummy1"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:height="0.2in"
+    android:layout_below="@id/rup"/>
+    />
+<TextView  
+	android:id="@+id/enter"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Enter your Parking Address"
+    android:gravity="center"
+    android:height="0.25in"
+    android:textColor="#fffff100"
+    android:textSize="0.12in"
+    android:typeface="serif"
+    android:textStyle="bold"
+    android:layout_below="@id/dummy1"/>
+    />
+<EditText
+        android:id="@+id/entry"
+        android:layout_width="1.8in"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:height="0.35in"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/enter"/>
+
+<Button 
+	android:id="@+id/Button01" 
+	android:layout_height="0.25in"
+	android:layout_width="0.75in"
+	android:gravity="center"
+	android:text="Submit" 
+	android:textColor="#fffff100"
+    android:typeface="serif"
+    android:textStyle="bold"
+    android:tint="#ffe32b21"
+	android:layout_centerInParent="true"
+	android:layout_alignRight="@+id/entry"
+	android:layout_below="@+id/entry" 
+	android:background="@drawable/press"
+	></Button>
+<TextView  
+	android:id="@+id/dummy2"
+    android:layout_width="fill_parent" 
+    android:layout_height="0.4in" 
+    android:layout_below="@id/Button01"/>
+    />
+<Button 
+	android:id="@+id/Button02" 
+	android:layout_height="0.35in"
+	android:layout_width="1.5in"
+	android:gravity="center"
+	android:text="Park at Current Location"
+	android:textColor="#fffff100"
+    android:typeface="serif"
+    android:textStyle="bold"
+    android:layout_centerInParent="true"
+	android:layout_below="@+id/dummy2" 
+	android:clickable="true"
+	android:background="@drawable/press"
+></Button>
+
+
+
+
+
+
+
+</RelativeLayout>
