@@ -10,10 +10,8 @@ import android.sax.EndElementListener;
 import android.sax.EndTextElementListener;
 import android.sax.RootElement;
 import android.util.Xml;
-import android.widget.TextView;
 
 public class AndroidSaxFeedParser extends BaseFeedParser {
-	//TextView sampletext;
 	
 	static final String RSS = "rss";
 	public AndroidSaxFeedParser(String feedUrl) {
@@ -33,22 +31,22 @@ public class AndroidSaxFeedParser extends BaseFeedParser {
 		});
 		array.getChild(INFO).setEndTextElementListener(new EndTextElementListener(){
 			public void end(String body) {
-				currentMessage.setTitle(body);
+				currentMessage.setInfo(body);
 			}
 		});
 		array.getChild(LATITUDE).setEndTextElementListener(new EndTextElementListener(){
 			public void end(String body) {
-				currentMessage.setLink(body);
+				currentMessage.setLatitude(body);
 			}
 		});
 		array.getChild(LONGITUDE).setEndTextElementListener(new EndTextElementListener(){
 			public void end(String body) {
-				currentMessage.setDescription(body);
+				currentMessage.setLongitude(body);
 			}
 		});
 		array.getChild(TIMEFRAME).setEndTextElementListener(new EndTextElementListener(){
 			public void end(String body) {
-				currentMessage.setDate(body);
+				currentMessage.setTimeframe(body);
 			}
 		});
 		try {
