@@ -1,3 +1,6 @@
+// This subsystem provides an interface between the user and other subsystems 
+// in the application logic layer.
+
 package com.phoneInterface;
 
 import java.io.IOException;
@@ -19,6 +22,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
+//This class handles the display functions required to display contents on the screen.
+
 public class Display extends Activity {
 	public static GeoPoint point, p1, p2;
 	EditText ad;
@@ -30,9 +36,10 @@ public class Display extends Activity {
         setContentView(R.layout.main);
     	final Geocoder geoCoder = new Geocoder(this, Locale.getDefault()); 
    
-
-        Button next1 = (Button) findViewById(R.id.Button01);
-        next1.setOnClickListener(new View.OnClickListener() {
+// This is the Submit button used to confirm the text entered in the address field
+    	
+        Button submit = (Button) findViewById(R.id.Button01);
+        submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	try {
             			ad=(EditText)findViewById(R.id.entry);
@@ -50,9 +57,11 @@ public class Display extends Activity {
                 Display.this.startActivity(myIntent);
             }
         });
-        
-        Button next2 = (Button) findViewById(R.id.Button02);
-        next2.setOnClickListener(new View.OnClickListener() {
+
+// This is the "Park at Current Location" button used to obtain coordinates of the current location
+       
+        Button cur_loc = (Button) findViewById(R.id.Button02);
+        cur_loc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
                 Location loc = lm.getLastKnownLocation("gps"); 
