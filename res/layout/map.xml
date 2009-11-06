@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainlayout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:apiKey="0jpFJrZRYQyHoAmzTHc_USFfU9ohBLueyZgQ4nQ"
+    />
+	
+	<Button 
+	android:id="@+id/Button03" 
+	android:layout_height="0.25in"
+	android:layout_width="0.75in"
+    android:layout_alignBottom="@id/mapview"
+    android:layout_alignLeft="@+id/mapview"
+	android:text="Change View"
+	android:textColor="#fffff100"
+    android:typeface="serif"
+    android:textStyle="bold"
+	android:background="@drawable/press">
+	</Button>
+	
+	<LinearLayout
+    android:id="@+id/zoomview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@id/mapview"
+    android:layout_alignRight="@+id/mapview"
+    />
+	
+
+</RelativeLayout>
