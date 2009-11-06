@@ -28,7 +28,7 @@ import android.widget.EditText;
 public class Display extends Activity {
 	public static GeoPoint point, p1, p2;
 	EditText ad;
-	
+		
     /* Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,13 +70,13 @@ public class Display extends Activity {
                 double longpoint=loc.getLongitude();
                 int lat=(int)(latpoint*1E6);
                 int lon=(int)(longpoint*1E6);
-
                 p2 = new GeoPoint(lat, lon);
                 point=p2;
                 Intent myIntent = new Intent(Display.this, Mapper.class);
                 Display.this.startActivity(myIntent);
             }
         });
+
         
     }
 }
