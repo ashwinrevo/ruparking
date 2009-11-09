@@ -24,8 +24,8 @@ public class Mapper extends MapActivity{
 	List<Overlay> mapOverlays;
     Drawable drawable1;
     Drawable drawable2;
-    HelloItemizedOverlay itemizedOverlay;
-    HelloItemizedOverlay itemizedOverlay2;
+    Painter itemizedOverlay;
+    Painter itemizedOverlay2;
     LinearLayout linearLayout;
     MapView mapView;
     ZoomControls mZoom;
@@ -39,7 +39,7 @@ public class Mapper extends MapActivity{
 //	MapView mapView;
 //	List<Overlay> mapOverlays;
 //	Drawable drawable;
-//	HelloItemizedOverlay itemizedoverlay;
+//	Painter itemizedoverlay;
 //	MapController mc;
 	int a;
 
@@ -3077,14 +3077,14 @@ for (int i=0;i<1000;i=i+10){
 		mapOverlays = mapView.getOverlays();
 		
 //		drawable = this.getResources().getDrawable(R.drawable.dot);
-//		itemizedoverlay = new HelloItemizedOverlay(drawable);
+//		itemizedoverlay = new Painter(drawable);
 //		itemizedoverlay.addOverlay(overlayitem);
 //		mapOverlays.add(itemizedoverlay);
 		drawable1 = this.getResources().getDrawable(R.drawable.green);
-        itemizedOverlay = new HelloItemizedOverlay(drawable1);
+        itemizedOverlay = new Painter(drawable1);
 
         drawable2 = this.getResources().getDrawable(R.drawable.red);
-        itemizedOverlay2 = new HelloItemizedOverlay(drawable2);
+        itemizedOverlay2 = new Painter(drawable2);
 
 
         for (int index=0;index< listOfGeopoints.size();index++){
