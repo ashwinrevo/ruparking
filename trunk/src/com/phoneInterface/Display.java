@@ -27,7 +27,7 @@ import android.widget.EditText;
 
 public class Display extends Activity {
 	public static GeoPoint point, p1, p2;
-	EditText ad;
+	EditText addressfield;
 		
     /* Called when the activity is first created. */
     @Override
@@ -42,8 +42,8 @@ public class Display extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	try {
-            			ad=(EditText)findViewById(R.id.entry);
-            		   List<Address> addresses = geoCoder.getFromLocationName(ad.getText().toString(),5);
+            			addressfield=(EditText)findViewById(R.id.entry);
+            		   List<Address> addresses = geoCoder.getFromLocationName(addressfield.getText().toString(),5);
                        if (addresses.size() > 0) {
                             p1 = new GeoPoint(
                                    (int) (addresses.get(0).getLatitude() * 1E6), 
