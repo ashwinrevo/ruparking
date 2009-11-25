@@ -1,4 +1,4 @@
-package com.mapManagement;
+package com.phoneInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,10 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+import com.mapManagement.Painter;
 import com.phoneInterface.R;
 
-public class Mapper extends MapActivity{
+public class MapDisplay extends MapActivity{
 	List<Overlay> mapOverlays;
     Drawable drawable1;
     Drawable drawable2;
@@ -34,13 +35,7 @@ public class Mapper extends MapActivity{
     ArrayList<GeoPoint> listOfGeopoints=new ArrayList<GeoPoint>();
     Location location;
 	LocationManager locationManager;
-//	ZoomControls mZoom;
-//	LinearLayout linearLayout;
-//	MapView mapView;
-//	List<Overlay> mapOverlays;
-//	Drawable drawable;
-//	Painter itemizedoverlay;
-//	MapController mc;
+
 	int a;
 
 	/** Called when the activity is first created. */
@@ -3120,8 +3115,8 @@ for (int i=0;i<1000;i=i+10){
 				} 
 				} 
 				mc.setZoom(a);
-				//Intent myIntent = new Intent(Mapper.this, Mapper.class);
-				//Mapper.this.startActivity(myIntent);
+				//Intent myIntent = new Intent(MapDisplay.this, MapDisplay.class);
+				//MapDisplay.this.startActivity(myIntent);
 			}
 		});
 	}

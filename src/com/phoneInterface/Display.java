@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Locale;
 
 import com.google.android.maps.GeoPoint;
-import com.mapManagement.Mapper;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +51,7 @@ public class Display extends Activity {
                        e.printStackTrace();
                    }               
                 point=p1;
-                Intent myIntent = new Intent(Display.this, Mapper.class);
+                Intent myIntent = new Intent(Display.this, MapDisplay.class);
                 Display.this.startActivity(myIntent);
             }
         });
@@ -72,7 +70,7 @@ public class Display extends Activity {
                 int lon=(int)(longpoint*1E6);
                 p2 = new GeoPoint(lat, lon);
                 point=p2;
-                Intent myIntent = new Intent(Display.this, Mapper.class);
+                Intent myIntent = new Intent(Display.this, MapDisplay.class);
                 Display.this.startActivity(myIntent);
             }
         });
