@@ -16,9 +16,9 @@ import android.widget.TextView;
 
     public class clientData extends Activity {
     	public String[] sensordata;
-    	public ArrayList<String> read=new ArrayList<String>();
-    	public ArrayList<String> latitude_coor=new ArrayList<String>();
-    	public ArrayList<String> longitude_coor=new ArrayList<String>();
+    	public static ArrayList<String> read=new ArrayList<String>();
+    	public static ArrayList<String> latitude_coor=new ArrayList<String>();
+    	public static ArrayList<String> longitude_coor=new ArrayList<String>();
     	
     	/** Called when the activity is first created. */
         @Override
