@@ -33,6 +33,19 @@
     android:layout_alignBottom="@id/mapview"
     android:layout_alignRight="@+id/mapview"
     />
+    
+ <Button 
+	android:id="@+id/Button04" 
+	android:layout_height="0.25in"
+	android:layout_width="0.75in"
+    android:layout_alignTop="@id/mapview"
+    android:layout_alignLeft="@+id/mapview"
+	android:text="Navigate"
+	android:textColor="#fffff100"
+    android:typeface="serif"
+    android:textStyle="bold"
+	android:background="@drawable/press">
+	</Button>
 	
 
 </RelativeLayout>
