@@ -33,7 +33,6 @@ DownloadText("http://www.winlab.rutgers.edu/~vrajeshv/new.txt");
            String[] lines;
            String delimiter = "\n";
            lines = parkingInfo.split(delimiter);//temp is an array of all lines
-         //  String[] sensordata;
            String delimiter1 = ",";
 
      for (int i=0; i<(lines.length)-1;i++){
@@ -45,10 +44,7 @@ DownloadText("http://www.winlab.rutgers.edu/~vrajeshv/new.txt");
 
           }
 
- //           TextView txt = (TextView) findViewById(R.id.text);
- //           txt.setText(longitude_coor.get(24));
-
-       }
+        }
 
        private InputStream OpenHttpConnection(String urlString)
        throws IOException
