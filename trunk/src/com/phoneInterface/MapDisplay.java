@@ -1,0 +1,181 @@
+package com.phoneInterface;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ZoomControls;
+
+import com.clientData.clientData;
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
+import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
+import com.google.android.maps.OverlayItem;
+import com.mapManagement.Painter;
+import com.navigationManagement.NavigationManagement;
+import com.phoneInterface.R;
+
+public class MapDisplay extends MapActivity{
+	List<Overlay> mapOverlays;
+	Drawable drawable1, drawable3;
+	Drawable drawable2,drawable4;
+	Painter itemizedOverlay1;
+	Painter itemizedOverlay2;
+	Painter itemizedOverlay3;
+	Painter itemizedOverlay4;
+	LinearLayout linearLayout;
+	public static MapView mapView;
+	ZoomControls mZoom;
+	OverlayItem overlayitem;
+	MapController mc;
+	ArrayList<GeoPoint> listOfGeopoints=new ArrayList<GeoPoint>();
+	Location location;
+	LocationManager locationManager;
+	ArrayList<String> color_initial=new ArrayList<String>();
+	ArrayList<String> latitude_initial=new ArrayList<String>();
+	ArrayList<String> longitude_initial=new ArrayList<String>();
+	ArrayList<Integer> color=new ArrayList<Integer>();
+	ArrayList<Integer> latitude=new ArrayList<Integer>();
+	ArrayList<Integer> longitude=new ArrayList<Integer>();
+	int a;
+	public static GeoPoint dest_p;
+	
+
+	/** Called when the activity is first created. */
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.map);     
+		clientData coor_info=new clientData();
+		coor_info.initialize();
+
+		color_initial=coor_info.read;
+		latitude_initial=coor_info.latitude_coor;
+		longitude_initial=coor_info.longitude_coor;
+
+		for (int i=0; i<color_initial.size()-1; i++){
+			int temp_color=Integer.parseInt(color_initial.get(i));
+			int temp_latitude=Integer.parseInt(latitude_initial.get(i));
+			int temp_longitude=Integer.parseInt(longitude_initial.get(i));
+
+			//some code has to come to create the color matrix
+			if (temp_color==255){
+				int[] sensor_values={100,75};
+				Random generator= new Random();
+				int randomIndex = generator.nextInt(2);
+				color.add(sensor_values[randomIndex]);
+			}
+			else{
+				int[] sensor_values={50,25};
+				Random generator= new Random();
+				int randomIndex = generator.nextInt(2);
+				color.add(sensor_values[randomIndex]);
+			}
+
+			color.add(temp_color);
+			latitude.add((temp_latitude));
+			longitude.add((temp_longitude));
+		}
+
+		for (int i=0;i<color_initial.size()-1;i++){
+			listOfGeopoints.add(new GeoPoint(latitude.get(i), longitude.get(i)));
+		}
+
+
+
+		OverlayItem overlayitem = new OverlayItem(com.phoneInterface.Display.point, "", "");
+		linearLayout = (LinearLayout) findViewById(R.id.zoomview);
+		mapView = (MapView) findViewById(R.id.mapview);
+		mapView.setStreetView(true);
+		mc=mapView.getController();
+		mc.animateTo(com.phoneInterface.Display.point);
+		int zl = 17;
+		a=zl;
+		mc.setZoom(a);
+		mZoom = (ZoomControls) mapView.getZoomControls();
+		linearLayout.addView(mZoom);
+		mapOverlays = mapView.getOverlays();
+
+		drawable1 = this.getResources().getDrawable(R.drawable.green);
+		itemizedOverlay1 = new Painter(drawable1);
+
+		drawable2 = this.getResources().getDrawable(R.drawable.red);
+		itemizedOverlay2 = new Painter(drawable2);
+
+		for (int index=0;index<listOfGeopoints.size();index++){
+			if (color.get(index)==100){
+				overlayitem = new OverlayItem(listOfGeopoints.get(index), "", "");
+				itemizedOverlay1.addOverlay(overlayitem);}
+
+			else {
+				overlayitem = new OverlayItem(listOfGeopoints.get(index), "", "");
+				itemizedOverlay2.addOverlay(overlayitem);}
+		}
+
+		mapOverlays.add(itemizedOverlay1);
+		mapOverlays.add(itemizedOverlay2);
+
+
+		// This is the "Change View" Button
+		Button chng_view = (Button) findViewById(R.id.Button03);
+		chng_view.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				if (a == 17) {
+					int zl = 18;
+					a=zl;
+				} else 
+				{if (a == 18) {
+					int zl = 14;
+					a=zl;
+				} else 
+				{
+					int zl = 17;
+					a=zl;
+				} 
+				} 
+				mc.setZoom(a);
+			}
+		});
+	
+	//This is the "Navigate" Button
+	  Button nav = (Button) findViewById(R.id.Button04);
+	  nav.setOnClickListener(new View.OnClickListener() {
+	      public void onClick(View view) {
+	    	  NavigationManagement nav_map=new NavigationManagement();
+	    	  nav_map.draw_route();
+	    	  //Intent myIntent1 = new Intent(MapDisplay.this, NavigationManagement.class);
+	          //MapDisplay.this.startActivity(myIntent1);     
+	          }
+	  
+	  });
+	  }
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public boolean onTouchEvent(MotionEvent event, MapView mapView) 
+    {   
+        //---when user lifts his finger---
+        if (event.getAction() == 1) {                
+            dest_p = mapView.getProjection().fromPixels(
+                (int) event.getX(),
+                (int) event.getY());
+            Intent myIntent = new Intent(MapDisplay.this, NavigationManagement.class);
+            MapDisplay.this.startActivity(myIntent);             
+            return true;
+        }
+        else                
+            return false;
+    }      
+}
