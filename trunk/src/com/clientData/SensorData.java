@@ -11,14 +11,28 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 import android.widget.TextView;
-
+/**
+ * This class fetches the parking spot information from the server.
+ * It contains three ArrayLists which store values of latitude, longitude and sensor readings.
+ * 
+ * @version     1.0
+ *
+ */
    public class SensorData extends Activity {
        public String[] sensordata;
        public ArrayList<String> read=new ArrayList<String>();
        public ArrayList<String> latitude_coor=new ArrayList<String>();
        public ArrayList<String> longitude_coor=new ArrayList<String>();
-
-       /** Called when the activity is first created. */
+       /**
+   	 * Called when the activity is first created. 
+   	 * Returns data to the MapDisplay class. 
+   	 * 
+   	 * @param  url String contains the address of the server from where the file is fetched.
+   	 * @throws FileNotFoundException if the data file is not present in the mobile phone.
+   	 * @return parkingInfo String containing the information corresponding to location of the parking spot.
+   	 * 
+   	 */   
+       
        @Override
 
        public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +60,12 @@ DownloadText("http://www.winlab.rutgers.edu/~vrajeshv/new.txt");
 
         }
 
+       /**
+        * Checks if http connection is open     
+        * @param url String contains the address of the server from where the file is fetched.
+        * @return in InputStream 
+        * @throws IOException
+        */
        private InputStream OpenHttpConnection(String urlString)
        throws IOException
        {
@@ -76,6 +96,12 @@ DownloadText("http://www.winlab.rutgers.edu/~vrajeshv/new.txt");
            }
            return in;
        }
+   /**
+     * Downloads the file from the specified location
+     * @param  URL String contains the address of the server from where the file is fetched.
+   	 * @throws FileNotFoundException if the data file is not present at the specified location.
+   	 * @return str String containing the information corresponding to location of the parking spot.
+   	 */
        private String DownloadText(String URL)
        {
            int BUFFER_SIZE = 2000;

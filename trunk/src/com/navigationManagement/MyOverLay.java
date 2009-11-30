@@ -1,6 +1,3 @@
-
-
-
 package com.navigationManagement;
 
 import android.graphics.Bitmap;
@@ -13,6 +10,10 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.Projection;
+/**
+ * This class provides the relevant data to the navigation management class.
+ * @version 1.0
+ */
 
 public class MyOverLay extends Overlay
 {
@@ -23,7 +24,13 @@ public class MyOverLay extends Overlay
 	private int defaultColor;
 	private String text="";
 	private Bitmap img = null;
-
+	/**
+	 * Provides the relevant data to the navigation management class
+	 * @param gp1 GeoPoint gives geopoint for the source address
+	 * @param gp2 GeoPoint gives geopoint for the destination address
+	 * @param mode Integer 
+	 * @return mode Integer  
+	 */
 	public MyOverLay(GeoPoint gp1,GeoPoint gp2,int mode) // GeoPoint is a int. (6E)
 	{
 		this.gp1 = gp1;

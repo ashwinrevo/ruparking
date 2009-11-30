@@ -1,7 +1,5 @@
-// This subsystem provides an interface between the user and other subsystems 
-// in the application logic layer.
-
 package com.phoneInterface;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +18,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
+/**
+ * This class displays  a text field for the user to provide the destination address to the system.
+ * The text field takes an input of type String. The input from the user is the parameter sent to the MapDisplay
+ * It belongs to the phone interface subsystem which is the interface between 
+ * the user and the application.
+ * 
+ * @version 1.0
+ */
 //This class handles the display functions required to display contents on the screen.
 
 public class Display extends Activity {
@@ -38,7 +43,8 @@ public class Display extends Activity {
     	
         Button submit = (Button) findViewById(R.id.Button01);
         submit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+          
+        	public void onClick(View view) {
             	try {
             			addressfield=(EditText)findViewById(R.id.entry);
             		   List<Address> addresses = geoCoder.getFromLocationName(addressfield.getText().toString(),5);
