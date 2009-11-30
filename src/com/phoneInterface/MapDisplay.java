@@ -15,25 +15,33 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ZoomControls;
 
-import com.clientData.clientData;
+import com.clientData.SensorData;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
-import com.mapManagement.Painter;
-import com.navigationManagement.NavigationManagement;
+import com.mapManagement.Mapper;
+import com.navigationManagement.Navigator;
 import com.phoneInterface.R;
-
+/**
+ * This class communicates with the clientData package and display.java to get relevant data to be displayed.
+ * The coordinates fetched from the Sensordata are overlayed as drawables on the map
+	 * It belongs to the phone interface subsystem which is the interface between 
+	 * the user and the application.
+	 *
+	 * @version 1.0
+	 */
 public class MapDisplay extends MapActivity{
+	
 	List<Overlay> mapOverlays;
 	Drawable drawable1, drawable3;
 	Drawable drawable2,drawable4;
-	Painter itemizedOverlay1;
-	Painter itemizedOverlay2;
-	Painter itemizedOverlay3;
-	Painter itemizedOverlay4;
+	Mapper itemizedOverlay1;
+	Mapper itemizedOverlay2;
+	Mapper itemizedOverlay3;
+	Mapper itemizedOverlay4;
 	LinearLayout linearLayout;
 	public static MapView mapView;
 	ZoomControls mZoom;
@@ -56,7 +64,7 @@ public class MapDisplay extends MapActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map);     
-		clientData coor_info=new clientData();
+		SensorData coor_info=new SensorData();
 		coor_info.initialize();
 
 		color_initial=coor_info.read;
@@ -107,10 +115,10 @@ public class MapDisplay extends MapActivity{
 		mapOverlays = mapView.getOverlays();
 
 		drawable1 = this.getResources().getDrawable(R.drawable.green);
-		itemizedOverlay1 = new Painter(drawable1);
+		itemizedOverlay1 = new Mapper(drawable1);
 
 		drawable2 = this.getResources().getDrawable(R.drawable.red);
-		itemizedOverlay2 = new Painter(drawable2);
+		itemizedOverlay2 = new Mapper(drawable2);
 
 		for (int index=0;index<listOfGeopoints.size();index++){
 			if (color.get(index)==100){
@@ -151,7 +159,7 @@ public class MapDisplay extends MapActivity{
 	  Button nav = (Button) findViewById(R.id.Button04);
 	  nav.setOnClickListener(new View.OnClickListener() {
 	      public void onClick(View view) {
-	    	  NavigationManagement nav_map=new NavigationManagement();
+	    	  Navigator nav_map=new Navigator();
 	    	  nav_map.draw_route();
 	    	  //Intent myIntent1 = new Intent(MapDisplay.this, NavigationManagement.class);
 	          //MapDisplay.this.startActivity(myIntent1);     
@@ -159,7 +167,7 @@ public class MapDisplay extends MapActivity{
 	  
 	  });
 	  }
-	@Override
+	//@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
 		return false;
@@ -171,7 +179,7 @@ public class MapDisplay extends MapActivity{
             dest_p = mapView.getProjection().fromPixels(
                 (int) event.getX(),
                 (int) event.getY());
-            Intent myIntent = new Intent(MapDisplay.this, NavigationManagement.class);
+            Intent myIntent = new Intent(MapDisplay.this, Navigator.class);
             MapDisplay.this.startActivity(myIntent);             
             return true;
         }

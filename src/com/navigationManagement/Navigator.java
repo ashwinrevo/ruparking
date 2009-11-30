@@ -19,10 +19,23 @@ import android.util.Log;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
+/**
+ * This class provides the route to guide the user from his current location to the destination parking spot.
+ * 
+ * @version 1.0
+ */
 
 public class Navigator extends MapActivity {
-	/** Called when the activity is first created. */
-
+	/** 
+	 * Called when the activity is first created. 
+	 * Generates navigation information for the user to the destination parking spot.
+	 * The function uses the Google Maps API's to get this information. This information is then set to the Output 
+	 * Terminal to be displayed on the screen.
+	 * 
+	 * @param start object containing the information corresponding to location of the parking spot.
+	 * @param destination object containing the information corresponding to location of the parking spot.
+	 * 
+	 */
 	MapView mapView;
 	GeoPoint srcGeoPoint, destGeoPoint;
 	
@@ -62,6 +75,13 @@ public class Navigator extends MapActivity {
 	return false;
 	}
 
+	/**
+	 * Draws path for the given address
+	 * @param src containing the information corresponding to the current location of the user.
+	 * @param dest containing the information corresponding to location of the parking spot.
+	 * @param color Integer
+	 * @param mMapView01
+	 */
 	private static void DrawPath(GeoPoint src, GeoPoint dest, int color,
 	MapView mMapView01) {
 		// connect to map web service
