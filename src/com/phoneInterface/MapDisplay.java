@@ -63,7 +63,8 @@ public class MapDisplay extends MapActivity{
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.map);     
+		setContentView(R.layout.map); 
+
 		SensorData coor_info=new SensorData();
 		coor_info.initialize();
 
@@ -90,7 +91,6 @@ public class MapDisplay extends MapActivity{
 				color.add(sensor_values[randomIndex]);
 			}
 
-			color.add(temp_color);
 			latitude.add((temp_latitude));
 			longitude.add((temp_longitude));
 		}

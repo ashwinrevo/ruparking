@@ -31,6 +31,10 @@ import android.widget.EditText;
 public class Display extends Activity {
 	public static GeoPoint point, p1, p2;
 	EditText addressfield;
+	
+	public Display(){
+		
+	}
 		
     /* Called when the activity is first created. */
     @Override

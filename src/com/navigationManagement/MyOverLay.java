@@ -37,7 +37,6 @@ public class MyOverLay extends Overlay
 		this.gp2 = gp2;
 		this.mode = mode;
 		defaultColor = 999; // no defaultColor
-
 	}
 
 	public MyOverLay(GeoPoint gp1,GeoPoint gp2,int mode, int defaultColor)
