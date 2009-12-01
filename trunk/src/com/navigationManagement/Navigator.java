@@ -82,7 +82,7 @@ public class Navigator extends MapActivity {
 	 * @param color Integer
 	 * @param mMapView01
 	 */
-	private static void drawPath(GeoPoint src, GeoPoint dest, int color,
+	public static String drawPath(GeoPoint src, GeoPoint dest, int color,
 	MapView mMapView01) {
 		// connect to map web service
 		StringBuilder urlString = new StringBuilder();
@@ -154,6 +154,8 @@ public class Navigator extends MapActivity {
 		{
 		e.printStackTrace();
 		}
-		} 
-
+		
+		return "route has been diplayed";
+	} 
+		
 }
