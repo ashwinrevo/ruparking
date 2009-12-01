@@ -47,15 +47,15 @@ public class MapDisplay extends MapActivity{
 	ZoomControls mZoom;
 	OverlayItem overlayitem;
 	MapController mc;
-	ArrayList<GeoPoint> listOfGeopoints=new ArrayList<GeoPoint>();
+	public ArrayList<GeoPoint> listOfGeopoints=new ArrayList<GeoPoint>();
 	Location location;
 	LocationManager locationManager;
 	ArrayList<String> color_initial=new ArrayList<String>();
 	ArrayList<String> latitude_initial=new ArrayList<String>();
 	ArrayList<String> longitude_initial=new ArrayList<String>();
-	ArrayList<Integer> color=new ArrayList<Integer>();
-	ArrayList<Integer> latitude=new ArrayList<Integer>();
-	ArrayList<Integer> longitude=new ArrayList<Integer>();
+	public ArrayList<Integer> color=new ArrayList<Integer>();
+	public ArrayList<Integer> latitude=new ArrayList<Integer>();
+	public ArrayList<Integer> longitude=new ArrayList<Integer>();
 	int a;
 	public static GeoPoint dest_p;
 	
