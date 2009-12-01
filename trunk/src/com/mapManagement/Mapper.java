@@ -17,7 +17,7 @@ public class Mapper extends ItemizedOverlay {
 	 * @param overlay is an object of type OverlayItem containing the drawable item
 	 * @return mOverlays.size() Integer indicating which color the location should be displayed in 
 	 */
-	private ArrayList<OverlayItem> mOverlays = new ArrayList<OverlayItem>();
+	public ArrayList<OverlayItem> mOverlays = new ArrayList<OverlayItem>();
 	
 	
 	public Mapper(Drawable defaultMarker) {

@@ -62,7 +62,7 @@ public class Navigator extends MapActivity {
 	//srcGeoPoint = com.phoneInterface.Display.p2;
 	//destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
 
-	DrawPath(srcGeoPoint, destGeoPoint, Color.GREEN, mapView);
+	drawPath(srcGeoPoint, destGeoPoint, Color.GREEN, mapView);
 
 	mapView.getController().animateTo(srcGeoPoint);
 	mapView.getController().setZoom(15);
@@ -82,7 +82,7 @@ public class Navigator extends MapActivity {
 	 * @param color Integer
 	 * @param mMapView01
 	 */
-	private static void DrawPath(GeoPoint src, GeoPoint dest, int color,
+	private static void drawPath(GeoPoint src, GeoPoint dest, int color,
 	MapView mMapView01) {
 		// connect to map web service
 		StringBuilder urlString = new StringBuilder();
@@ -134,7 +134,8 @@ public class Navigator extends MapActivity {
 		mMapView01.getOverlays().add(new MyOverLay(gp1,gp2,2,color));
 		Log.d("xxx","pair:" + pairs[i]);
 		}
-		mMapView01.getOverlays().add(new MyOverLay(dest,dest, 3)); // use the default color
+		mMapView01.getOverlays().add(new MyOverLay(dest,dest,3)); // use the default color
+		
 		}
 		}
 		catch (MalformedURLException e)
