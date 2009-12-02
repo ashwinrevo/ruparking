@@ -12,7 +12,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -52,15 +55,15 @@ public class Navigator extends MapActivity {
 	}
 	
 	public void draw_route(){
-
-	//mapView = (MapView) findViewById(com.phoneInterface.R.id.mapview);
-	/*double src_lat = 25.04202; // the testing source
-	double src_long = 121.534761;
-	double dest_lat = 25.05202; // the testing destination
-	double dest_long = 121.554761;*/
-	
-	//srcGeoPoint = com.phoneInterface.Display.p2;
-	//destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
+	LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
+    Location loc = lm.getLastKnownLocation("gps"); 
+    
+    double latpoint=loc.getLatitude();
+    double longpoint=loc.getLongitude();
+    int lat=(int)(latpoint*1E6);
+    int lon=(int)(longpoint*1E6);
+    srcGeoPoint=new GeoPoint(lat,lon);
+   	destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
 
 	drawPath(srcGeoPoint, destGeoPoint, Color.GREEN, mapView);
 
@@ -137,20 +140,16 @@ public class Navigator extends MapActivity {
 		mMapView01.getOverlays().add(new MyOverLay(dest,dest,3)); // use the default color
 		
 		}
-		}
-		catch (MalformedURLException e)
+		}catch (MalformedURLException e)
 		{
 		e.printStackTrace();
-		}
-		catch (IOException e)
+		}catch (IOException e)
 		{
 		e.printStackTrace();
-		}
-		catch (ParserConfigurationException e)
+		}catch (ParserConfigurationException e)
 		{
 		e.printStackTrace();
-		}
-		catch (SAXException e)
+		}catch (SAXException e)
 		{
 		e.printStackTrace();
 		}
