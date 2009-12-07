@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="true"
-        android:apiKey="0jpFJrZRYQyHoAmzTHc_USFfU9ohBLueyZgQ4nQ"
+        android:apiKey="06mKlEBGxvv6VXuxYk6xGVg8ggY5FK60hkaF2WQ"
     />
 	
 	<Button 
@@ -47,5 +47,17 @@
 	android:background="@drawable/press">
 	</Button>
 	
+<Button 
+	android:id="@+id/Button05" 
+	android:layout_height="0.25in"
+	android:layout_width="0.75in"
+    android:layout_above="@id/Button03"
+    android:layout_alignLeft="@+id/mapview"
+	android:text="Update"
+	android:textColor="#fffff100"
+    android:typeface="serif"
+    android:textStyle="bold"
+	android:background="@drawable/press">
+	</Button>
 
 </RelativeLayout>
