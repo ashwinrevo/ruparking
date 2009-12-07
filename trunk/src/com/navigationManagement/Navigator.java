@@ -12,10 +12,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -40,13 +37,14 @@ public class Navigator extends MapActivity {
 	 * 
 	 */
 	MapView mapView;
-	GeoPoint srcGeoPoint, destGeoPoint;
+	GeoPoint srcGeoPoint1, destGeoPoint;
 	
 	public Navigator(){
 		mapView = com.phoneInterface.MapDisplay.mapView;
-		
-		srcGeoPoint=new GeoPoint(40520836,-74413620);
-		destGeoPoint=new GeoPoint(40530734,-74483626);
+		//srcGeoPoint=new GeoPoint(40520836,-74413620);
+		//destGeoPoint=new GeoPoint(40530734,-74483626);
+		srcGeoPoint1 = com.phoneInterface.MapDisplay.srcGeoPoint;
+		destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
 	}
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,19 +53,12 @@ public class Navigator extends MapActivity {
 	}
 	
 	public void draw_route(){
-	LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
-    Location loc = lm.getLastKnownLocation("gps"); 
-    
-    double latpoint=loc.getLatitude();
-    double longpoint=loc.getLongitude();
-    int lat=(int)(latpoint*1E6);
-    int lon=(int)(longpoint*1E6);
-    srcGeoPoint=new GeoPoint(lat,lon);
-   	destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
+	//setContentView(com.phoneInterface.R.layout.map);
+   	//destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
 
-	drawPath(srcGeoPoint, destGeoPoint, Color.GREEN, mapView);
+	drawPath(srcGeoPoint1, destGeoPoint, Color.GREEN, mapView);
 
-	mapView.getController().animateTo(srcGeoPoint);
+	mapView.getController().animateTo(srcGeoPoint1);
 	mapView.getController().setZoom(15);
 
 	}

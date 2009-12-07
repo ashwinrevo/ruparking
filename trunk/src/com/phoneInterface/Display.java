@@ -73,7 +73,6 @@ public class Display extends Activity {
             public void onClick(View view) {
             	LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
                 Location loc = lm.getLastKnownLocation("gps"); 
-                
                 double latpoint=loc.getLatitude();
                 double longpoint=loc.getLongitude();
                 int lat=(int)(latpoint*1E6);
