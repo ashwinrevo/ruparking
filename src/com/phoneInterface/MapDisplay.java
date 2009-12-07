@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -11,8 +12,10 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ZoomControls;
 
 import com.clientData.SensorData;
@@ -28,13 +31,13 @@ import com.phoneInterface.R;
 /**
  * This class communicates with the clientData package and display.java to get relevant data to be displayed.
  * The coordinates fetched from the Sensordata are overlayed as drawables on the map
-	 * It belongs to the phone interface subsystem which is the interface between 
-	 * the user and the application.
-	 *
-	 * @version 1.0
-	 */
+ * It belongs to the phone interface subsystem which is the interface between 
+ * the user and the application.
+ *
+ * @version 1.0
+ */
 public class MapDisplay extends MapActivity{
-	
+
 	List<Overlay> mapOverlays;
 	Drawable drawable1, drawable3;
 	Drawable drawable2,drawable4;
@@ -57,8 +60,8 @@ public class MapDisplay extends MapActivity{
 	public ArrayList<Integer> latitude=new ArrayList<Integer>();
 	public ArrayList<Integer> longitude=new ArrayList<Integer>();
 	int a;
-	public static GeoPoint dest_p;
-	
+	public static GeoPoint dest_p, srcGeoPoint;
+
 
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
@@ -130,8 +133,8 @@ public class MapDisplay extends MapActivity{
 				itemizedOverlay2.addOverlay(overlayitem);}
 		}
 
-		mapOverlays.add(itemizedOverlay1);
-		mapOverlays.add(itemizedOverlay2);
+		//mapOverlays.add(itemizedOverlay1);
+		//mapOverlays.add(itemizedOverlay2);
 
 
 		// This is the "Change View" Button
@@ -154,36 +157,53 @@ public class MapDisplay extends MapActivity{
 				mc.setZoom(a);
 			}
 		});
-	
-	//This is the "Navigate" Button
-	  Button nav = (Button) findViewById(R.id.Button04);
-	  nav.setOnClickListener(new View.OnClickListener() {
-	      public void onClick(View view) {
-	    	  Navigator nav_map=new Navigator();
-	    	  nav_map.draw_route();
-	    	  //Intent myIntent1 = new Intent(MapDisplay.this, NavigationManagement.class);
-	          //MapDisplay.this.startActivity(myIntent1);     
-	          }
-	  
-	  });
-	  }
+
+		//This is the "Navigate" Button
+		Button nav = (Button) findViewById(R.id.Button04);
+		nav.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				LocationManager lm1 = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
+				Location loc1 = lm1.getLastKnownLocation("gps"); 
+				double latpoint=loc1.getLatitude();
+				double longpoint=loc1.getLongitude();
+				int lat=(int)(latpoint*1E6);
+				int lon=(int)(longpoint*1E6);
+				srcGeoPoint=new GeoPoint(lat,lon);
+				Navigator nav_map=new Navigator();
+				nav_map.draw_route();
+				//Intent myIntent1 = new Intent(MapDisplay.this, Navigator.class);
+				//MapDisplay.this.startActivity(myIntent1);     
+			}
+
+		});
+		
+		mapView.setOnTouchListener(new MapView.OnTouchListener() { 
+            @Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+            	dest_p = mapView.getProjection().fromPixels(
+    					(int) event.getX(),
+    					(int) event.getY());
+            	Toast.makeText(getBaseContext(), 
+                        dest_p.getLatitudeE6() / 1E6 + "," + 
+                        dest_p.getLongitudeE6() /1E6 , 
+                        Toast.LENGTH_SHORT).show();
+				return false;
+			} 
+        });
+	}
+
+
 	//@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public boolean onTouchEvent(MotionEvent event, MapView mapView) 
-    {   
-        //---when user lifts his finger---
-        if (event.getAction() == 1) {                
-            dest_p = mapView.getProjection().fromPixels(
-                (int) event.getX(),
-                (int) event.getY());
-            Intent myIntent = new Intent(MapDisplay.this, Navigator.class);
-            MapDisplay.this.startActivity(myIntent);             
-            return true;
-        }
-        else                
-            return false;
-    }      
+
+
+
+
+
+
+
 }
