@@ -158,6 +158,16 @@ public class MapDisplay extends MapActivity{
 			}
 		});
 
+		Button updateB = (Button) findViewById(R.id.Button05);
+		  updateB.setOnClickListener(new View.OnClickListener() {
+		      public void onClick(View view) {
+		    	  Intent myIntent2 = new Intent (MapDisplay.this, MapDisplay.class);
+		    	  MapDisplay.this.startActivity(myIntent2);  
+	//	    	  Update up_date = new Update();
+		          }
+		  
+		  });
+
 		//This is the "Navigate" Button
 		Button nav = (Button) findViewById(R.id.Button04);
 		nav.setOnClickListener(new View.OnClickListener() {
