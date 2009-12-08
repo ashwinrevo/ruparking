@@ -133,8 +133,8 @@ public class MapDisplay extends MapActivity{
 				itemizedOverlay2.addOverlay(overlayitem);}
 		}
 
-		//mapOverlays.add(itemizedOverlay1);
-		//mapOverlays.add(itemizedOverlay2);
+		mapOverlays.add(itemizedOverlay1);
+		mapOverlays.add(itemizedOverlay2);
 
 
 		// This is the "Change View" Button
@@ -172,6 +172,7 @@ public class MapDisplay extends MapActivity{
 		Button nav = (Button) findViewById(R.id.Button04);
 		nav.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				mapView.getOverlays().clear();
 				LocationManager lm1 = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
 				Location loc1 = lm1.getLastKnownLocation("gps"); 
 				double latpoint=loc1.getLatitude();
