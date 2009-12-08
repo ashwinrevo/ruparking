@@ -19,6 +19,7 @@ import android.util.Log;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
+import com.phoneInterface.R;
 /**
  * This class provides the route to guide the user from his current location to the destination parking spot.
  * 
@@ -55,7 +56,7 @@ public class Navigator extends MapActivity {
 	public void draw_route(){
 	//setContentView(com.phoneInterface.R.layout.map);
    	//destGeoPoint = com.phoneInterface.MapDisplay.dest_p;
-
+		
 	drawPath(srcGeoPoint1, destGeoPoint, Color.GREEN, mapView);
 
 	mapView.getController().animateTo(srcGeoPoint1);
