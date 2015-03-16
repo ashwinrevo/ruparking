@@ -1,0 +1,2 @@
+Initially we will be developing this application on a mobile phone emulator such as Android SDK. Ultimately, our goal is to implement this software in an actual Android phone with GPS capability.
+We will be using Google maps and an Android API during the implementation of our software.
